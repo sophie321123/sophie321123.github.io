@@ -22,7 +22,11 @@
     box-sizing: border-box;
     transition: background 0.3s, color 0.3s;
 }
-
+body {
+    font-family: Vazir, sans-serif;
+    direction: rtl;
+    text-align: right;
+}
 body {
     font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
