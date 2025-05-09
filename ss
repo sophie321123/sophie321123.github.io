@@ -8,7 +8,7 @@ sophie321123.github.io/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت شخصی [نام شما]</title>
+    <title>سایت ئدئدوئودوئدوئدئددئدمتما]</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
