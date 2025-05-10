@@ -1,31 +1,544 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نمونه سایت فارسی</title>
-    <!-- فونت Vazir - ضروری -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+    <title>رزومه حرفه‌ای | معرفی فعالیت‌ها</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
         body {
-            font-family: Vazir, sans-serif;
-            direction: rtl;
-            text-align: right;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
         }
-        h1 {
-            color: #3498db;
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #4f46e5, #9333ea);
+            transition: width 1s ease-in-out;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: 12px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background-color: #e5e7eb;
         }
     </style>
 </head>
-<body>
-    <h1>سلام! این یک تست ساده است</h1>
-    <p>اگر این متن را می‌بینید، یعنی قسمت HTML صحیح کار می‌کند.</p>
-    
-    <!-- تست JavaScript -->
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600">رزومه من</a>
+            <div class="hidden md:flex space-x-8 space-x-reverse">
+                <a href="#home" class="text-gray-700 hover:text-indigo-600 transition">خانه</a>
+                <a href="#about" class="text-gray-700 hover:text-indigo-600 transition">درباره من</a>
+                <a href="#skills" class="text-gray-700 hover:text-indigo-600 transition">مهارت‌ها</a>
+                <a href="#experience" class="text-gray-700 hover:text-indigo-600 transition">سوابق کاری</a>
+                <a href="#projects" class="text-gray-700 hover:text-indigo-600 transition">پروژه‌ها</a>
+                <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition">تماس با من</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-indigo-600 transition">خانه</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-indigo-600 transition">درباره من</a>
+            <a href="#skills" class="block py-2 text-gray-700 hover:text-indigo-600 transition">مهارت‌ها</a>
+            <a href="#experience" class="block py-2 text-gray-700 hover:text-indigo-600 transition">سوابق کاری</a>
+            <a href="#projects" class="block py-2 text-gray-700 hover:text-indigo-600 transition">پروژه‌ها</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-indigo-600 transition">تماس با من</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white pt-32 pb-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">سلام، من <span class="text-yellow-300">علی محمدی</span> هستم</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">توسعه‌دهنده وب و طراح UI/UX</h2>
+                <p class="text-lg mb-8 leading-relaxed">با بیش از 5 سال تجربه در توسعه وب و طراحی رابط کاربری. متخصص در ایجاد راه‌حل‌های دیجیتال خلاقانه و کاربرپسند.</p>
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#contact" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">تماس با من</a>
+                    <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition">نمونه کارها</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Profile" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-xl">
+                    <div class="absolute -bottom-4 -left-4 bg-yellow-400 text-gray-800 px-4 py-2 rounded-lg font-bold shadow-lg">5+ سال تجربه</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">درباره <span class="text-indigo-600">من</span></h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="About Me" class="w-64 h-64 rounded-lg object-cover shadow-lg">
+                </div>
+                <div class="md:w-2/3 md:pr-10">
+                    <h3 class="text-2xl font-semibold mb-4">چه کسی هستم؟</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        من علی محمدی، توسعه‌دهنده وب و طراح UI/UX با تخصص در ایجاد وبسایت‌ها و اپلیکیشن‌های مدرن و کاربرپسند هستم. با تسلط بر آخرین تکنولوژی‌های وب، به مشتریانم کمک می‌کنم تا حضور دیجیتال قوی‌تری داشته باشند.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        با بیش از 5 سال تجربه در این زمینه، پروژه‌های متعددی را برای کسب‌وکارهای مختلف از استارتاپ‌ها تا شرکت‌های بزرگ اجرا کرده‌ام. همیشه به دنبال یادگیری تکنولوژی‌های جدید و بهبود مهارت‌هایم هستم.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div>
+                            <p class="font-semibold"><span class="text-indigo-600 mr-2">نام:</span> علی محمدی</p>
+                            <p class="font-semibold"><span class="text-indigo-600 mr-2">سن:</span> 28 سال</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold"><span class="text-indigo-600 mr-2">ایمیل:</span> ali@example.com</p>
+                            <p class="font-semibold"><span class="text-indigo-600 mr-2">شهر:</span> تهران</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition inline-flex items-center">
+                            <i class="fas fa-download ml-2"></i> دانلود رزومه
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">مهارت‌های <span class="text-indigo-600">من</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">مهارت‌های فنی</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">JavaScript</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">React</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Node.js</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">مهارت‌های حرفه‌ای</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">طراحی UI/UX</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">توسعه Frontend</span>
+                                <span class="text-gray-600">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">توسعه Backend</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">مدیریت پروژه</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">سوابق <span class="text-indigo-600">کاری</span></h2>
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="space-y-8">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="absolute right-0 top-0 w-6 h-6 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold">توسعه‌دهنده ارشد Frontend</h3>
+                                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">2020 - اکنون</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-indigo-600 mb-2">شرکت فناوری اطلاعات نوین</h4>
+                            <p class="text-gray-600">
+                                مسئولیت توسعه رابط کاربری برای محصولات اصلی شرکت با استفاده از React و TypeScript. همکاری با تیم طراحی برای پیاده‌سازی دقیق طرح‌ها و بهبود تجربه کاربری.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="absolute right-0 top-0 w-6 h-6 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold">توسعه‌دهنده Frontend</h3>
+                                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">2018 - 2020</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-indigo-600 mb-2">استارتاپ وب‌پرداز</h4>
+                            <p class="text-gray-600">
+                                توسعه و نگهداری پلتفرم پرداخت آنلاین شرکت. پیاده‌سازی کامپوننت‌های قابل استفاده مجدد و بهبود عملکرد صفحات اصلی. همکاری نزدیک با تیم بک‌اند برای یکپارچه‌سازی APIها.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item relative pl-12">
+                        <div class="absolute right-0 top-0 w-6 h-6 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold">توسعه‌دهنده وب</h3>
+                                <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">2016 - 2018</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-indigo-600 mb-2">شرکت طراحی وب آریا</h4>
+                            <p class="text-gray-600">
+                                توسعه وبسایت‌های سفارشی برای مشتریان مختلف با استفاده از HTML, CSS, JavaScript و jQuery. مسئولیت طراحی رابط کاربری و تجربه کاربری برای پروژه‌های کوچک و متوسط.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">پروژه‌های <span class="text-indigo-600">من</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">پلتفرم مدیریت پروژه</h3>
+                        <p class="text-gray-600 mb-4">یک پلتفرم جامع برای مدیریت پروژه‌های تیمی با قابلیت‌های پیشرفته زمان‌بندی و همکاری</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">React</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Node.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                            مشاهده جزئیات <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">سیستم فروش آنلاین</h3>
+                        <p class="text-gray-600 mb-4">پلتفرم تجارت الکترونیک با پنل مدیریت پیشرفته و سیستم پرداخت یکپارچه</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Vue.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Laravel</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">MySQL</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                            مشاهده جزئیات <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">اپلیکیشن مدیریت مالی</h3>
+                        <p class="text-gray-600 mb-4">برنامه موبایل برای مدیریت هزینه‌ها و درآمدها با نمودارهای تحلیلی و گزارش‌دهی</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">React Native</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Firebase</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Redux</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                            مشاهده جزئیات <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition inline-flex items-center">
+                    مشاهده همه پروژه‌ها <i class="fas fa-arrow-left mr-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">تماس با <span class="text-indigo-600">من</span></h2>
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">در تماس باشید</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        اگر به همکاری با من علاقه‌مند هستید یا سوالی دارید، لطفاً از طریق فرم تماس پیام بگذارید یا مستقیماً با من از طریق اطلاعات زیر ارتباط برقرار کنید.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">آدرس</h4>
+                                <p class="text-gray-600">تهران، خیابان آزادی، کوچه شهید فلانی، پلاک 12</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">ایمیل</h4>
+                                <p class="text-gray-600">ali@example.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">تلفن</h4>
+                                <p class="text-gray-600">+98 912 345 6789</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <h4 class="font-semibold mb-4">شبکه‌های اجتماعی</h4>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-indigo-600 hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">نام شما</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="نام و نام خانوادگی">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">ایمیل</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="example@domain.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">موضوع</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="موضوع پیام">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">پیام شما</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="متن پیام..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">
+                            ارسال پیام
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">رزومه من</a>
+                    <p class="mt-2 text-gray-400">طراحی و توسعه توسط علی محمدی</p>
+                </div>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
-        console.log("JS is working!");
-        alert("جاوااسکریپت
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        }
+        
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            skillsObserver.observe(skillsSection);
+        }
+    </script>
+</body>
